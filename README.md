@@ -1,5 +1,5 @@
-# AlgoritmiOrdinamento
+# SortingAlgorithms
 
-Applicazione console .NET C#
+Applicazione console C# .NET 10
 
-Implementazione degli algoritmi di ordinamento con [relativa spiegazione](AlgoritmiOrdinamento/spiegazioneAlgoritmi.md) in formato .md
+Implementazione degli algoritmi di ordinamento con [relativa spiegazione](SortingAlgorithms/SortingAlgorithms.md) in formato .md

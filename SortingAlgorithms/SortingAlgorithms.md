@@ -13,6 +13,8 @@ L'algoritmo termina quando l'array risulterà ordinato ovvero, quando la sequenz
    <br>
    <br>
 
+---
+
 ## Bubble sort
 
 Questo algoritmo utilizza un sistema di scambio basato nello scegliere una coppia di elementi. Se il primo elemento è più grande del secondo allora vengono scambiati, in modo tale da portare gli elementi più grandi in coda all'array mentre quelli più piccoli all'inizio.
