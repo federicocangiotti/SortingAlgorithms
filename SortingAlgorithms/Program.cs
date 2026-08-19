@@ -1,103 +1,106 @@
-﻿namespace AlgoritmiOrdinamento
+﻿namespace SortingAlgorithms
 {
     internal class Program
     {
-        static GestoreAlgoritmi algoritmi;
+        static AlgorithmsManager algorithms;
 
         static void Main(string[] args)
         {
-            string messaggioCreazioneArray =
-                "[1] -> lunghezza 10 000\t\tintervallo valori[1 - 100]\n" +
-                "[2] -> lunghezza 50 000\t\tintervallo valori[1 - 100]\n" +
-                "[3] -> lunghezza 100 000\tintervallo valori[1 - 100]\n" +
-                "[4] -> lunghezza 1 000 000\tintervallo valori[1 - 1000]\n" +
-                "[9] -> Personalizza dati\n" +
-                "[0] -> Esci dal programma\n" +
-                "Seleziona un template oppure personalizzalo per creare l'array: ";
+            string arrayCreationMessage =
+                "[1] -> Length 10 000\t\tValue range [1 - 100]\n" +
+                "[2] -> Length 50 000\t\tValue range [1 - 100]\n" +
+                "[3] -> Length 100 000\t\tValue range [1 - 100]\n" +
+                "[4] -> Length 1 000 000\t\tValue range [1 - 1000]\n" +
+                "\n" +
+                "[9] -> Customize Data\n" +
+                "[0] -> Exit the program\n" +
+                "\n" +
+                "Select a template or customize it to create the array: ";
 
-            string messaggioSelezioneAlgoritmo =
+            string algorithmSelectionMessage =
                 "\n[1] -> Selection sort\n" +
                 "[2] -> Bubble sort\n" +
                 "[3] -> Insertion sort\n" +
                 "[4] -> Shell sort\n" +
-                "Scegli l'algoritmo di ordinamento: ";
+                "\n" +
+                "Choose a sorting algorithm: ";
 
             do
             {
-                int lunghezza, nMin, nMax, sceltaAlgoritmo;
-                lunghezza = nMin = nMax = 0;
+                int length, nMin, nMax, selectedAlgorithm;
+                length = nMin = nMax = 0;
 
-                Console.WriteLine(messaggioCreazioneArray);
-                int sceltaCreazioneArray = Convert.ToInt32(Console.ReadLine());
-                if (sceltaCreazioneArray == 0)
+                Console.WriteLine(arrayCreationMessage);
+                int arrayCreationChoice = Convert.ToInt32(Console.ReadLine());
+                if (arrayCreationChoice == 0)
                 {
-                    Console.WriteLine("\nProgramma terminato");
+                    Console.WriteLine("\nProgram terminated");
                     break;
                 }
-                switch (sceltaCreazioneArray)
+                switch (arrayCreationChoice)
                 {
                     case 1:
-                        lunghezza = 10000;
+                        length = 10000;
                         nMin = 1;
                         nMax = 100;
                         break;
                     case 2:
-                        lunghezza = 50000;
+                        length = 50000;
                         nMin = 1;
                         nMax = 100;
                         break;
                     case 3:
-                        lunghezza = 100000;
+                        length = 100000;
                         nMin = 1;
                         nMax = 100;
                         break;
                     case 4:
-                        lunghezza = 1000000;
+                        length = 1000000;
                         nMin = 1;
                         nMax = 1000;
                         break;
                     case 9:
-                        Console.WriteLine("\nInserisci la lunghezza dell'array, il numero minimo e massimo generato, tutti separati tra loro da una virgola: ");
-                        string caratteristicheVettore = Console.ReadLine();
-                        DividiCaratteristicheArray(caratteristicheVettore, ref lunghezza, ref nMin, ref nMax);
+                        Console.WriteLine("\nEnter the length of the array and the minimum and maximum numbers to be generated, separated by commas: ");
+                        string vectorProperties = Console.ReadLine();
+                        SplitFeaturesArray(vectorProperties, ref length, ref nMin, ref nMax);
                         break;
                     default:
-                        Console.WriteLine("Scelta invalida, riavviare il programma");
+                        Console.WriteLine("Invalid selection; please restart the program");
                         break;
                 }
-                algoritmi = new GestoreAlgoritmi(lunghezza, nMin, nMax);
+                algorithms = new AlgorithmsManager(length, nMin, nMax);
 
-                Console.WriteLine(messaggioSelezioneAlgoritmo);
-                sceltaAlgoritmo = Convert.ToInt32(Console.ReadLine());
-                switch (sceltaAlgoritmo)
+                Console.WriteLine(algorithmSelectionMessage);
+                selectedAlgorithm = Convert.ToInt32(Console.ReadLine());
+                switch (selectedAlgorithm)
                 {
                     case 1:
-                        MessaggioInizioOrdinamento();
-                        algoritmi.SelectionSort();
+                        MessageStartSorting();
+                        algorithms.SelectionSort();
                         break;
                     case 2:
-                        MessaggioInizioOrdinamento();
-                        algoritmi.BubbleSort();
+                        MessageStartSorting();
+                        algorithms.BubbleSort();
                         break;
                     case 3:
-                        MessaggioInizioOrdinamento();
-                        algoritmi.InsertionSort();
+                        MessageStartSorting();
+                        algorithms.InsertionSort();
                         break;
                     case 4:
-                        MessaggioInizioOrdinamento();
-                        algoritmi.ShellSort();
+                        MessageStartSorting();
+                        algorithms.ShellSort();
                         break;
                     default:
-                        Console.WriteLine("Scelta invalida, riavviare il programma");
+                        Console.WriteLine("Invalid selection; please restart the program");
                         break;
                 }
-                MessaggioFineOrdinamento();
-                Console.WriteLine(algoritmi.TempoEsecuzione);
+                MessageEndSorting();
+                Console.WriteLine(algorithms.executionTime);
                 Console.WriteLine("\n------------------------------------------------------------------------------------------\n");
             } while (true);
         }
 
-        static void DividiCaratteristicheArray(string input, ref int length, ref int min, ref int max)
+        static void SplitFeaturesArray(string input, ref int length, ref int min, ref int max)
         {
             string[] ris = input.Split(",");
             length = Convert.ToInt32(ris[0]);
@@ -105,18 +108,18 @@
             max = Convert.ToInt32(ris[2]);
         }
 
-        static void MessaggioInizioOrdinamento()
+        static void MessageStartSorting()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.CursorVisible = false;
-            Console.WriteLine("Ordinamento in corso, attendere...");
+            Console.WriteLine("\nSorting in progress, please wait...");
         }
 
-        static void MessaggioFineOrdinamento()
+        static void MessageEndSorting()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.CursorVisible = true;
-            Console.WriteLine("\nOrdinamento completato");
+            Console.WriteLine("\nSorting Complete");
             Console.ForegroundColor = ConsoleColor.White;
         }
     }
