@@ -1,5 +1,7 @@
 # SortingAlgorithms
 
-Applicazione console C# .NET 10
+Applicazione console che ha come obiettivo quello di spiegare e implementare tutti i principali algoritmi di ordinamento.
 
-Implementazione degli algoritmi di ordinamento con [relativa spiegazione](SortingAlgorithms/SortingAlgorithms.md) in formato .md
+Spiegazione di ogni algoritmo disponibile [qui](SortingAlgorithms/spiegazione.md).
+
+Sviluppato in C# .NET 10.
