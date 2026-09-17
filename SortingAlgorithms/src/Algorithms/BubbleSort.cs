@@ -6,19 +6,18 @@ public class BubbleSort : ISortAlgorithm
 
     public void Sort(int[] array)
     {
-        bool swapped = true;
-        int end = array.Length - 1;
+        var swapped = true;
+        var end = array.Length - 1;
         while (swapped)
         {
             swapped = false;
-            for (int i = 0; i < end; i++)
-            {
+            for (var i = 0; i < end; i++)
                 if (array[i] > array[i + 1])
                 {
                     (array[i], array[i + 1]) = (array[i + 1], array[i]);
                     swapped = true;
                 }
-            }
+
             end--;
         }
     }

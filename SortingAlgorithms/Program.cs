@@ -1,12 +1,12 @@
+using System.Diagnostics;
 using SortingAlgorithms.Algorithms;
 using SortingAlgorithms.Data;
 using SortingAlgorithms.Ui;
-using System.Diagnostics;
 
 while (true)
 {
     /* Initial message */
-    int templateChoice = ConsoleUi.ChooseTemplate();
+    var templateChoice = ConsoleUi.ChooseTemplate();
 
     /* Exit program if user chooses to do so */
     if (templateChoice == 0)
@@ -21,8 +21,8 @@ while (true)
         : ArrayTemplate.Get(templateChoice);
 
     /* Select algorithm choice from user */
-    int algorithmChoice = ConsoleUi.ChooseAlgorithm();
-    ISortAlgorithm? algorithm = AlgorithmRegistry.Get(algorithmChoice);
+    var algorithmChoice = ConsoleUi.ChooseAlgorithm();
+    var algorithm = AlgorithmRegistry.Get(algorithmChoice);
 
     /* Check if algorithm exists */
     if (algorithm is null)

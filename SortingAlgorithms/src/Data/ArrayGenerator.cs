@@ -6,10 +6,7 @@ public static class ArrayGenerator
     {
         var random = new Random();
         var array = new int[length];
-        for (int i = 0; i < length; i++)
-        {
-            array[i] = random.Next(min, max + 1);
-        }
+        for (var i = 0; i < length; i++) array[i] = random.Next(min, max + 1);
         return array;
     }
 }

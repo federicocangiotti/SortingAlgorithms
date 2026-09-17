@@ -10,5 +10,8 @@ public static class AlgorithmRegistry
         [4] = new ShellSort()
     };
 
-    public static ISortAlgorithm? Get(int key) => Algorithms.TryGetValue(key, out var algorithm) ? algorithm : null;
+    public static ISortAlgorithm? Get(int key)
+    {
+        return Algorithms.TryGetValue(key, out var algorithm) ? algorithm : null;
+    }
 }
